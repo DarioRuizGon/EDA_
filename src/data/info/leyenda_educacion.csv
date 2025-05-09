@@ -1,0 +1,5 @@
+,nivel_educativo (isced11),descripcion
+0,ED0-2,"Less than primary, primary and lower secondary education (levels 0-2)"
+1,ED3_4,Upper secondary and post-secondary non-tertiary education (levels 3 and 4)
+2,ED5-8,Tertiary education (levels 5-8)
+3,TOTAL,All ISCED 2011 levels
