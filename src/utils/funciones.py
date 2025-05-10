@@ -236,35 +236,22 @@ def pinta_serie_temp(df, columnas_num, una_grafica = False, col_temporal = None,
     plt.show();
 
 
-def dispersion_hasta_cuatro(df, col_x, col_y, col_color = None, size = None, escala = 1, multiplicador_tamano = 0.5):
-    minimo = df[size].min() * multiplicador_tamano
-    maximo = df[size].max() * multiplicador_tamano
+def dispersion_hasta_cuatro(df, col_x, col_y, size = None, col_color = None):
     fig, axs = plt.subplots(1,1,figsize = (10,8))
     axs.set_title(f"Diagrama de dispersión de {col_x} y {col_y}")
     if size and col_color:
         if type(size) == str:
-            scatter = sns.scatterplot(x = col_x, y = col_y, size = df[size] * escala, 
-                            sizes = (minimo, maximo), hue = col_color, data=df, 
-                            alpha = .7, palette = "viridis")
+            sns.scatterplot(x = col_x, y = col_y, size = size, hue = col_color, data=df, alpha = .7)
         else:
-            scatter = sns.scatterplot(x = col_x, y = col_y, s = size, hue = col_color, 
-                            data=df, alpha = .7)
+            sns.scatterplot(x = col_x, y = col_y, s = size, hue = col_color, data=df, alpha = .7)
     elif size:
         if type(size) == str:
-            scatter= sns.scatterplot(x = col_x, y = col_y, size = df[size] * escala, 
-                            sizes = (minimo, maximo), data=df, alpha = .7, 
-                            color = "green")
+            sns.scatterplot(x = col_x, y = col_y, size = size, data=df, alpha = .7, color = "green")
         else:
-            scatter = sns.scatterplot(x = col_x, y = col_y, s = size, data=df, alpha = .7,
-                            color = "green")
+            sns.scatterplot(x = col_x, y = col_y, s = size, data=df, alpha = .7, color = "green")
     elif col_color:
-        scatter = sns.scatterplot(x = col_x, y = col_y, hue = col_color, data=df,
-                        alpha = .7, s = 35, palette = "viridis")
+        sns.scatterplot(x = col_x, y = col_y, hue = col_color, data=df, alpha = .7, s = 35)
     else:
-        scatter = sns.scatterplot(x = col_x, y = col_y, data=df, alpha = .7,
-                        color = "green", s = 35)
-    
-    legend = axs.legend(ncol = 2, loc = "upper right", frameon = False, labelspacing = 2)
+        sns.scatterplot(x = col_x, y = col_y, data=df, alpha = .7, color = "green", s = 35)
 
-    
     plt.show();
